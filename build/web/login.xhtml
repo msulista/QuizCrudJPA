@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/template.xhtml">
+
+            <ui:define name="content">
+                <h2>Efetue seu login</h2>
+                
+                <h:form>    
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col form-tags">
+                                    <h:outputLabel value="#{str.email}" for="idEmail"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <h:inputText value="#{loginMB.email}" id="idEmail"/>
+                                </div>                            
+                            </div>                             
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col form-tags">
+                                    <h:outputLabel value="#{str.senha}" for="idSenha"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <h:inputSecret value="#{loginMB.senha}" id="idSenha"/>
+                                </div>                            
+                            </div>                            
+                            <h:messages tooltip="true" errorStyle="color:red" showDetail="false"/>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--1-col">
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Logar" action="#{loginMB.verificaLogin()}"/>
+                                </div>                                 
+                            </div>                            
+                </h:form>
+                <h:link value="Caso ainda não possua cadstro" outcome="cadastroUser"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+
+            <ui:define name="top">
+                <ui:include src="header.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                
+                        <h:form>
+                            <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" var="quiz" value="#{quizMB.quizRepositorio.quizs}" >
+                                <f:facet name="header">
+                                    <h:outputText value="Lista de Quiz"/>
+                                </f:facet>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.nomeTurma}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idNome" value="#{quiz.turma.nome}"/>
+                                </h:column>
+                                
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.data-inicio}"/>
+                                    </f:facet>
+                                    <h:outputLabel class="mdl-data-table__cell--non-numeric" id="idDataInicio" value="#{quiz.dataInicio}" >
+                                        <f:convertDateTime pattern ="dd/MM/yyyy " />
+                                    </h:outputLabel>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.data-fim}"/>
+                                    </f:facet>
+                                    <h:outputLabel class="mdl-data-table__cell--non-numeric" id="idDataFim" value="#{quiz.dataTermino}" >
+                                        <f:convertDateTime pattern ="dd/MM/yyyy " />
+                                    </h:outputLabel>
+                                </h:column>
+                                
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.editar}"/>
+                                    </f:facet>
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Editar" action="#{quizMB.editar(quiz)}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.deletar}"/>
+                                    </f:facet>
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Deletar" action="#{quizMB.remover(quiz)}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

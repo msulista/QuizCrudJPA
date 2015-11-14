@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+
+            <ui:define name="top">
+                <ui:include src="header.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                
+                        <h:form>
+                            <h:dataTable class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" var="turma" value="#{turmaMB.turmaRepositorio.turmas}">
+                                <f:facet name="header">
+                                    <h:outputText value="Lista de turmas"/>
+                                </f:facet>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.nome}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idNome" value="#{turma.nome}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.materia}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idMateria" value="#{turma.materia}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.sala}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idSala" value="#{turma.sala}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.diasemana}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idDiaSemana" value="#{turma.diaSemana}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.curso}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idCurso" value="#{turma.curso}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.semestre}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idSemestre" value="#{turma.semestre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.alunos}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idNumeroDeAlunos" value="#{turma.numeroDeAlunos}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.editar}"/>
+                                    </f:facet>
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Editar" action="#{turmaMB.editar(turma)}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.deletar}"/>
+                                    </f:facet>
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Deletar" action="#{turmaMB.remover(turma)}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

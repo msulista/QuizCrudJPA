@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/template/template.xhtml">         
+
+            <ui:define name="top">
+                <ui:include src="header.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+<!--                <main class="mdl-layout__content">-->
+                    <div class="page-content">
+                            <h1>Edição de Usuário</h1>  
+                        <h:form>    
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col form-tags">
+                                    <h:outputLabel value="#{str.nome}" for="idNome"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <h:inputText value="#{loginMB.usuarioLogado.nome}" id="idNome" required="true"/>
+                                </div>                            
+                            </div>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col form-tags">
+                                    <h:outputLabel value="#{str.telefone}" for="idTelefone"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <h:inputText value="#{loginMB.usuarioLogado.telefone}" id="idTelefone" required="true"/>
+                                </div>                            
+                            </div>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col form-tags">
+                                    <h:outputLabel value="#{str.email}" for="idEmail"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <h:inputText value="#{loginMB.usuarioLogado.email}" id="idEmail" required="true"/>
+                                </div>                            
+                            </div>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col form-tags">
+                                    <h:outputLabel value="#{str.senha}" for="idKey"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <h:inputSecret value="#{loginMB.usuarioLogado.key}" id="idKey" required="true"/>
+                                </div>                            
+                            </div>                            
+                            <h:messages tooltip="true" errorStyle="color:red" showDetail="false"/>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--1-col">
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Cadastrar" action="#{loginMB.atualizaUsuario()}"/>
+                                </div>
+                                <div class="mdl-cell mdl-cell--6-col"></div>
+                                <div class="mdl-cell mdl-cell--4-col"></div>
+                                <div class="mdl-cell mdl-cell--1-col">
+                                    <h:button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Home" outcome="index.xhtml"/>
+                                </div> 
+                            </div>                            
+                        </h:form>
+                    </div>                    
+<!--                </main>-->
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

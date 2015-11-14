@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+
+            <ui:define name="top">
+                <ui:include src="header.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                <h2>Bem vindo estudante #{loginMB.usuarioLogado.nome}!!!!</h2>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <h4>Editar perfil</h4>
+                        <h5>Seus dados cadastrados</h5>
+                        <h6><b>Nome:</b> #{loginMB.usuarioLogado.nome}</h6>
+                        <h6><b>Telefone:</b> #{loginMB.usuarioLogado.telefone}</h6>
+                        <h6><b>E-Mail:</b> #{loginMB.usuarioLogado.email}</h6>                       
+                        
+                        <h:button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Editar" outcome="editaUser.xhtml"/>
+                        <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Deletar" action="#{loginMB.removeUsuario(usuario)}"/>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <h4>Gerenciar</h4>
+                        <h5>Turmas</h5>
+                        <h:button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Listar Turmas" outcome="listaTurma.xhtml"/>
+                        <br/>
+                        <h5>Quizes Respondidos</h5>
+                        <h:button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Listar Quiz" />
+                    </div>                    
+                </div>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
