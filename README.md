@@ -1,7 +1,7 @@
 #Trabalho Programação Internet II - Marcus
-
-# EduQuiz
-Trabalho da cadeira de Projeto de desenvolvimento e Programação Internet II.
+#Parte 2
+# EduQuiz com JPA
+Trabalho da cadeira de Programação Internet II.
 
 O projeto consiste em um sistema de avaliação o conteúdo do curso.
 
