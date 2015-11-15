@@ -5,6 +5,7 @@
  */
 package repositorio;
 
+import dao.UsuarioDaoBd;
 import java.util.ArrayList;
 import java.util.List;
 import model.Usuario;
@@ -15,26 +16,27 @@ import model.Usuario;
  */
 public class UsuarioRepositorio {
     
-    private List<Usuario> usuarios;
+    private UsuarioDaoBd usuarioDaoBd;
 
     public UsuarioRepositorio() {
-        
-        this.usuarios = new ArrayList<>();
-        //this.usuarios.add(new Usuario("Prof Marcus", "9588.7354", "mv@gmail.com", "1234", true));
-        //this.usuarios.add(new Usuario("Dudu", "8126.4587", "dudu@gmail.com", "1234", false));
+        this.usuarioDaoBd = new UsuarioDaoBd();
     }
     
     public void addUsuario(Usuario usuario){
         
-       usuarios.add(usuario);
+       this.usuarioDaoBd.inserir(usuario);
     }
 
+    public void editar(Usuario usuario){
+        this.editar(usuario);
+    }
+    
     public List<Usuario> getUsuarios() {
-        return usuarios;
+        return usuarioDaoBd.listar();
     }
     
     public void deletaUsuario(Usuario usuario){
-        usuarios.remove(usuario);
+        this.usuarioDaoBd.deletar(usuario);
     }
     
         
