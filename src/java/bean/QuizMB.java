@@ -49,9 +49,9 @@ public class QuizMB {
      
     //Cadastro
     public String cadastraQuiz(){
+        System.out.println("####" + quizSelecionado.getNome());
         adicionaQuiz();
-        limparCadastro();
-        
+        limparCadastro();        
         return "listaQuiz";
     }
     public void adicionaQuiz(){
