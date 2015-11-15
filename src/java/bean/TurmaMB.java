@@ -114,7 +114,7 @@ public class TurmaMB {
     }
     
     public String atualizar(){
-        
+        turmaRepositorio.edita(turmaSelecionada);
         return "listaTurma?faces-redirect=true";
     }
     
