@@ -5,6 +5,7 @@
  */
 package repositorio;
 
+import dao.QuizDaoBd;
 import java.util.ArrayList;
 import java.util.List;
 import model.Quiz;
@@ -16,21 +17,26 @@ import model.Quiz;
 public class QuizRepositorio {
     
     private List<Quiz> quizList;
+    private QuizDaoBd quizDaoBd;
 
     public QuizRepositorio() {
         this.quizList = new ArrayList<>();
+        this.quizDaoBd = new QuizDaoBd();
     }
 
     public void addQuiz(Quiz quiz){
-        quizList.add(quiz);
+        this.quizDaoBd.inserir(quiz);
     }
     
+    public void editar(Quiz quiz){
+        this.quizDaoBd.atualizar(quiz);
+    }
     public List<Quiz> getQuizs(){
-        return quizList;
+        return quizDaoBd.listar();
     }
     
     public void deletaQuiz(Quiz quiz){
-        quizList.remove(quiz);
+        this.quizDaoBd.deletar(quiz);
     }
     
     
