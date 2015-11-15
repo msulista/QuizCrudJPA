@@ -19,13 +19,11 @@ public class UsuarioDaoBd implements InterfaceDao<Usuario>{
 
     @Override
     public void inserir(Usuario bean) {
-            System.out.println("Teste1");
             EntityManager em = JpaUtil.getEntityManager();
-            System.out.println("Test2");
             em.getTransaction().begin();
             
             if(bean.getId()== null){
-            em.persist(bean);
+                em.persist(bean);
             }else{
                 em.merge(bean);
             }
@@ -40,21 +38,29 @@ public class UsuarioDaoBd implements InterfaceDao<Usuario>{
         EntityManager em = JpaUtil.getEntityManager();
         em.getTransaction().begin(); 
         
-        em.remove(em.merge(bean));
+        em.remove(bean);
         em.getTransaction().commit();
         
         em.close();        
     }
 
     @Override
-    public void atualizar(Usuario bean) {
-    
-       
+    public void atualizar(Usuario bean) {    
+        try {
+            EntityManager em = JpaUtil.getEntityManager();
+            em.getTransaction().begin();
+            
+            em.merge(bean);
+                        
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }       
     }
 
     @Override
-    public List listar() {
-        
+    public List listar() {        
         EntityManager em = JpaUtil.getEntityManager();
         List<Usuario> listaUsuario = em.createQuery("SELECT u FROM Usuario u").getResultList();
         em.close();
