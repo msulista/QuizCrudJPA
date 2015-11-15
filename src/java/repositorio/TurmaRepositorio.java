@@ -5,6 +5,7 @@
  */
 package repositorio;
 
+import dao.TurmaDaoBd;
 import java.util.ArrayList;
 import java.util.List;
 import model.Turma;
@@ -16,24 +17,28 @@ import model.Turma;
 public class TurmaRepositorio {
     
     private List<Turma> turmas;
+    private TurmaDaoBd turmaDaoBd;
 
     public TurmaRepositorio() {
         this.turmas = new ArrayList<Turma>();
-        this.turmas.add(new Turma("PI2QN", "Programação para Internet II", "Quinta", "604A", "ADS", "4"));
-        this.turmas.add(new Turma("ES3TN", "Engenharia de Software III", "Terça", "503A", "ADS", "4"));
-        this.turmas.add(new Turma("PD4N", "Projeto e Desenvolvimento", "Quarta", "702A", "ADS", "4"));
+        this.turmaDaoBd = new TurmaDaoBd();
+//        this.turmas.add(new Turma("PI2QN", "Programação para Internet II", "Quinta", "604A", "ADS", "4"));
+//        this.turmas.add(new Turma("ES3TN", "Engenharia de Software III", "Terça", "503A", "ADS", "4"));
+//        this.turmas.add(new Turma("PD4N", "Projeto e Desenvolvimento", "Quarta", "702A", "ADS", "4"));
     }
     
     public void addTurma(Turma turma){
-        turmas.add(turma);
+        this.turmaDaoBd.inserir(turma);
     }
-    
+    public void edita(Turma turma){
+        this.turmaDaoBd.atualizar(turma);
+    }
     public List<Turma> getTurmas(){
-        return turmas;
+        return turmaDaoBd.listar();
     }
     
     public void deletaTurma(Turma turma){
-        turmas.remove(turma);
+        this.turmaDaoBd.deletar(turma);
     }
     
 }
