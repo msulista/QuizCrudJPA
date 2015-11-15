@@ -61,7 +61,7 @@ public class LoginMB {
         
         FacesContext context = FacesContext.getCurrentInstance();
         UsuarioBean usuarioBean = (UsuarioBean) context.getExternalContext().getApplicationMap().get("usuarioBean");
-        List<Usuario> usuarios = usuarioBean.getUsuarioRepositorio().getUsuarios();
+        List<Usuario> usuarios = usuarioBean.getUsuarios();
         
         for (Usuario usuario: usuarios){
             if(usuario.verificaLogin(email, senha)){
