@@ -22,28 +22,28 @@
                                 </f:facet>
                                 <h:column>
                                     <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.nome}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idNomeQuiz" value="#{quiz.nome}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
                                         <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.nomeTurma}"/>
                                     </f:facet>
-                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idNome" value="#{quiz.turma.nome}"/>
-                                </h:column>
-                                
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.data-inicio}"/>
-                                    </f:facet>
-                                    <h:outputLabel class="mdl-data-table__cell--non-numeric" id="idDataInicio" value="#{quiz.dataInicio}" >
-                                        <f:convertDateTime pattern ="dd/MM/yyyy " />
-                                    </h:outputLabel>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idNomTurma" value="#{quiz.turma.nome}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.data-fim}"/>
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.diasemana}"/>
                                     </f:facet>
-                                    <h:outputLabel class="mdl-data-table__cell--non-numeric" id="idDataFim" value="#{quiz.dataTermino}" >
-                                        <f:convertDateTime pattern ="dd/MM/yyyy " />
-                                    </h:outputLabel>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idMateria" value="#{quiz.turma.materia}"/>
                                 </h:column>
-                                
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.diasemana}"/>
+                                    </f:facet>
+                                    <h:outputText class="mdl-data-table__cell--non-numeric" id="idDiaSemana" value="#{quiz.turma.diaSemana}"/>
+                                </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.editar}"/>
