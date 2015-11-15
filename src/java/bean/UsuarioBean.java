@@ -5,8 +5,7 @@
  */
 package bean;
 
-import dao.InterfaceDao;
-import dao.UsuarioDaoBd;
+import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import model.Usuario;
@@ -23,12 +22,10 @@ public class UsuarioBean {
     private UsuarioRepositorio usuarioRepositorio;
     private Usuario usuarioSelecionado;
     private Usuario usuarioConfirmacao;
-    private InterfaceDao usuarioDao;
     
     public UsuarioBean() {
         this.usuarioRepositorio = new UsuarioRepositorio();
         this.usuarioSelecionado = new Usuario(); 
-        this.usuarioDao = new UsuarioDaoBd();
     }
 
     public UsuarioRepositorio getUsuarioRepositorio() {
@@ -58,8 +55,7 @@ public class UsuarioBean {
     }
     
     public void adicionaUsuario(){
-        //this.usuarioRepositorio.addUsuario(usuarioSelecionado);
-        this.usuarioDao.inserir(usuarioSelecionado);
+        this.usuarioRepositorio.addUsuario(usuarioSelecionado);
     }
     
     public String confirmacaoCadastro(){
@@ -72,26 +68,26 @@ public class UsuarioBean {
     
     //Editar
     public String editaUsuario(Usuario usuario){
-        usuarioSelecionado = usuario;
+        this.usuarioSelecionado = usuario;
+        this.usuarioRepositorio.editar(usuario);
         return "editaAdmin?faces-redirect=true";
     }
-    public String atualizaUsuario(){
-        return "confirmacaoCadastro?faces-redirect=true";
-    }
+//    public String atualizaUsuario(){
+//        return "confirmacaoCadastro?faces-redirect=true";
+//    }
     public String removeUsuario(Usuario usuario){        
         usuarioRepositorio.deletaUsuario(usuario);
         return "/faces/index.xhtml";
     }
     
     
-//    public  List<Usuario> getUsuarios(){
-//        usuarios = usuarioRepositorio.getUsuarios();
-//        return usuarios;
-//    }
-//
-//    
-//    
-//    //Login
+    public  List<Usuario> getUsuarios(){        
+        return usuarioRepositorio.getUsuarios();
+    }
+
+    
+    
+    //Login
 //    public String validaUser(){
 //        
 //        for (Usuario user : usuarioRepositorio.getUsuarios()) {
