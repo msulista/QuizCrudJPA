@@ -8,6 +8,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import model.Pergunta;
+import model.Quiz;
 import util.JpaUtil;
 
 /**
@@ -71,5 +72,11 @@ public class PerguntaDaoBd implements InterfaceDao<Pergunta>{
         List<Pergunta> listaPergunta = em.createQuery("SELECT p FROM Pergunta p").getResultList();
         em.close();
         return (listaPergunta);
+    }
+    
+    public List<Pergunta> listaPerguntaQuiz(Quiz q){
+        EntityManager em = JpaUtil.getEntityManager();
+        List<Pergunta> perguntas = em.createNativeQuery("SELECT * FROM Pergunta where idQuiz = "+q.getId()).getResultList();
+        return perguntas;
     }
 }
