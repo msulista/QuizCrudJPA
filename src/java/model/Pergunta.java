@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
@@ -38,6 +39,15 @@ public class Pergunta implements Serializable {
     @CollectionTable(name="respostas", joinColumns=@JoinColumn(name="perguntaId"))
     private List<Resposta> respostaList;
 
+    public Pergunta() {
+        this.pergunta = pergunta;
+        this.pontuacao = pontuacao;
+        this.materia = materia;
+        this.quiz = new Quiz();
+        this.respostaList = new ArrayList<>();
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -84,6 +94,10 @@ public class Pergunta implements Serializable {
 
     public void setRespostaList(List<Resposta> respostaList) {
         this.respostaList = respostaList;
+    }
+    
+    public void adicionaResposta(Resposta resposta){
+        this.respostaList.add(resposta);
     }
  
     @Override
