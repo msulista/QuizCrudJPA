@@ -20,12 +20,8 @@ public class QuizMB {
     
     private QuizRepositorio quizRepositorio;
     private Quiz quizSelecionado;
-
+  
     public QuizMB() {
-    }
-
-    
-    public QuizMB(QuizRepositorio quizRepositorio, Quiz quizSelecionado) {
         this.quizRepositorio = new QuizRepositorio();
         this.quizSelecionado = new Quiz();
     }
