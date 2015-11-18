@@ -27,21 +27,21 @@
                             </div> 
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--4-col form-tags">
-                                    <h:outputLabel value="#{str.nome}" for="idNome"/>
+                                    <h:outputLabel value="#{str.nome}" for="idNomeQuiz"/>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col">
-                                    <h:inputText value="#{quizMB.quizSelecionado.nome}" id="idNome" required="true"/>
+                                    <h:inputText value="#{quizMB.quizSelecionado.nome}" id="idNomeQuiz" required="true"/>
                                 </div>                            
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--4-col form-tags">
-                                    <h:outputLabel value="#{str.nomeTurma}" for="idNome"/>
+                                    <h:outputLabel value="#{str.nomeTurma}" for="idNomeTurma"/>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col">
                                     <h:selectOneRadio label="turma" value="#{quizMB.quizSelecionado.turma}"
                                                       converter="turmaConverter" required="true">
                                         <f:selectItems value="#{turmaMB.turmaRepositorio.turmas}" var="turma"
-                                                       itemLabel="#{turma.nome}" itemValue="#{turma}" /><br/>
+                                                       itemLabel="#{turma.nome}" itemValue="#{turma}" id="idNomeTurma"/><br/>
                                     </h:selectOneRadio>
                                 </div>                            
                             </div> 

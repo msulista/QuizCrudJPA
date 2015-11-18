@@ -56,6 +56,12 @@
                                     </f:facet>
                                     <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Deletar" action="#{quizMB.remover(quiz)}"/>
                                 </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText class="mdl-data-table__cell--non-numeric" value="#{str.cadPergunta}"/>
+                                    </f:facet>
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Cadastra Pergunta" action="#{perguntaMB.carregarQuiz(quiz)}"/>
+                                </h:column>
                             </h:dataTable>
                         </h:form>
             </ui:define>
