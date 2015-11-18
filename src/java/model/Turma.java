@@ -8,12 +8,14 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 /**
  *
@@ -38,6 +40,9 @@ public class Turma implements Serializable{
     @ManyToMany(mappedBy = "turma")
     private List<Usuario> alunos;
 
+    @Transient
+    private int quantidadeAlunos;
+    
     public Turma() {
         this.alunos = new ArrayList<>();
     }
@@ -116,13 +121,43 @@ public class Turma implements Serializable{
         this.alunos = alunos;
     }
 
+    public int getQuantidadeAlunos() {
+        return quantidadeAlunos;
+    }
+
+    public void setQuantidadeAlunos(int quantidadeAlunos) {
+        this.quantidadeAlunos = quantidadeAlunos;
+    }
+    
     public void adicionaAluno(Usuario usuario){
         this.alunos.add(usuario);
     }
     
-    public int quantidadeAlunos(){
-        
+    public int quantidadeAlunos(){        
         return this.alunos.size();
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Turma other = (Turma) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }
