@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,12 +33,9 @@ public class Quiz implements Serializable {
     private Turma turma;
 
     public Quiz() {
-    }
-
-    public Quiz(String nome, Turma turma) {
         this.nome = nome;
-        this.perguntas = perguntas;
         this.turma = turma;
+        this.perguntas = new ArrayList<>();
     }
     
     public Long getId() {
