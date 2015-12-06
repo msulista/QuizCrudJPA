@@ -9,12 +9,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 /**
@@ -26,8 +26,8 @@ public class Turma implements Serializable{
     
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Basic(optional = false)
+    @SequenceGenerator(name = "turm_seq", sequenceName = "turm_seq", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "turm_seq")
     private Integer id;
     
     private String nome;
@@ -38,16 +38,16 @@ public class Turma implements Serializable{
     private String semestre;
     
     @ManyToMany(mappedBy = "turma")
+//    @ManyToMany(cascade = CascadeType.REFRESH)
+//    @JoinTable(name = "turma", joinColumns = {
+//                                                @JoinColumn(name = "alunos_id", nullable = false)}, 
+//                                inverseJoinColumns = {@JoinColumn(name = "turma_id", nullable = false)})
     private List<Usuario> alunos;
 
     @Transient
-    private int quantidadeAlunos;
+    private int quantidadeAlunos;  
     
-    public Turma() {
-        this.alunos = new ArrayList<>();
-    }
-    
-     public Turma(String nome, String materia, String diaSemana, String sala, String curso, String semestre) {        
+     public Turma() {        
         this.nome = nome;
         this.materia = materia;
         this.diaSemana = diaSemana;
