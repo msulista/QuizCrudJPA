@@ -125,13 +125,18 @@ public class TurmaMB {
     
     //Gerenciamento
     
-    public String cadastraAluno(){
+    public String cadastraAluno(Turma turma){
        
         FacesContext context = FacesContext.getCurrentInstance();
         LoginMB loginMB = (LoginMB) context.getExternalContext().getSessionMap().get("loginMB");
+        Usuario usuario = loginMB.getUsuarioLogado();
+        
         System.out.println("Tamanho array " + turmaSelecionada.getAlunos().size());
-        System.out.println("ADICIONA ALUNO "+loginMB.getUsuarioLogado());
-        this.turmaSelecionada.adicionaAluno(loginMB.getUsuarioLogado());
+        System.out.println("ADICIONA ALUNO "+loginMB.getUsuarioLogado() + "ID TURMA " + turmaSelecionada.getId());
+        this.turmaSelecionada = turma;
+        usuario.addTurma(turma);
+        this.turmaSelecionada.adicionaAluno(usuario);
+        cadastraTurma();
         System.out.println("Tamanho array " + turmaSelecionada.getAlunos().size());
                      
        return "listaTurma?faces-redirect=true";
