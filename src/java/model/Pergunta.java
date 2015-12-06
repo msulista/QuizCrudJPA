@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -25,7 +26,8 @@ import javax.persistence.ManyToOne;
 public class Pergunta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "perg_seq", sequenceName = "perg_seq", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "perg_seq")
     private Long id;
     private String pergunta;    
     private double pontuacao;    
