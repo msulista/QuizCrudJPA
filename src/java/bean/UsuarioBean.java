@@ -10,6 +10,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import model.Usuario;
 import repositorio.UsuarioRepositorio;
+import ws.ClienteUsuario;
 
 /**
  *
@@ -22,10 +23,13 @@ public class UsuarioBean {
     private UsuarioRepositorio usuarioRepositorio;
     private Usuario usuarioSelecionado;
     private Usuario usuarioConfirmacao;
+    private ClienteUsuario cliente;
     
     public UsuarioBean() {
         this.usuarioRepositorio = new UsuarioRepositorio();
         this.usuarioSelecionado = new Usuario(); 
+        this.cliente = new ClienteUsuario();
+        
     }
 
     public UsuarioRepositorio getUsuarioRepositorio() {
@@ -56,6 +60,7 @@ public class UsuarioBean {
     
     public void adicionaUsuario(){
         this.usuarioRepositorio.addUsuario(usuarioSelecionado);
+        this.cliente.addUsuario(usuarioSelecionado);
     }
     
     public String confirmacaoCadastro(){
