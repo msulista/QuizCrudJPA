@@ -6,15 +6,15 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -25,7 +25,8 @@ public class Usuario implements Serializable {
       
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "usur_seq", sequenceName = "user_seq", initialValue = 1, allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usur_seq")
     private Integer id;
     
     private String nome;
@@ -35,16 +36,14 @@ public class Usuario implements Serializable {
     private boolean admin;
     @ManyToMany
     private List<Turma> turma;
-    
-    public Usuario(){
         
-    }
-    public Usuario(String nome, String telefone, String email, String senha, boolean admin) {
+    public Usuario() {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;  
         this.admin = admin;
+        turma = new ArrayList<>();
     }   
 
     public Integer getId() {
@@ -53,8 +52,7 @@ public class Usuario implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-    
+    }    
     
     public String getNome() {
         return nome;
@@ -99,6 +97,10 @@ public class Usuario implements Serializable {
     public boolean verificaLogin(String email, String senha){
         
         return (this.email.equalsIgnoreCase(email) && this.senha.equalsIgnoreCase(senha));
+    }
+    
+    public void addTurma(Turma turma){
+        this.turma.add(turma);
     }
 
     @Override
