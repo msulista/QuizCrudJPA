@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -24,7 +25,8 @@ public class Quiz implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "quiz_seq", sequenceName = "quiz_seq" ,initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "quiz_seq")
     private Long id;
     private String nome;
     @OneToMany
@@ -34,8 +36,9 @@ public class Quiz implements Serializable {
 
     public Quiz() {
         this.nome = nome;
-        this.turma = turma;
+        this.turma = new Turma();
         this.perguntas = new ArrayList<>();
+        
     }
     
     public Long getId() {
