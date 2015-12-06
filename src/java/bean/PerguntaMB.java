@@ -59,11 +59,12 @@ public class PerguntaMB {
         this.perguntaSelecionada = perguntaSelecionada;
     }
     
-    public void cadastraPergunta(){
-        cadastraResposta();
+    public String cadastraPergunta(){        
         this.perguntaSelecionada.setQuiz(quiz);
+        cadastraResposta();
         this.perguntaRepositorio.addPergunta(perguntaSelecionada);
-        perguntaSelecionada = new Pergunta();
+        limparFormulario();
+        return "listaQuiz?faces-redirect=true";
     }
     
     public String carregarQuiz(Quiz q){
@@ -90,5 +91,9 @@ public class PerguntaMB {
                 this.perguntaSelecionada.adicionaResposta(resposta);
             }
         }
+    }
+    
+    public void limparFormulario(){
+        Pergunta pergunta = new Pergunta();
     }
 }
