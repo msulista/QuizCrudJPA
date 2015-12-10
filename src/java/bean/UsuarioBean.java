@@ -8,6 +8,7 @@ package bean;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.ws.rs.core.GenericType;
 import model.Usuario;
 import repositorio.UsuarioRepositorio;
 import ws.ClienteUsuario;
@@ -59,7 +60,6 @@ public class UsuarioBean {
     }
     
     public void adicionaUsuario(){
-        this.usuarioRepositorio.addUsuario(usuarioSelecionado);
         this.cliente.addUsuario(usuarioSelecionado);
     }
     
@@ -77,39 +77,16 @@ public class UsuarioBean {
         this.usuarioRepositorio.editar(usuario);
         return "editaAdmin?faces-redirect=true";
     }
-//    public String atualizaUsuario(){
-//        return "confirmacaoCadastro?faces-redirect=true";
-//    }
+
     public String removeUsuario(Usuario usuario){        
         usuarioRepositorio.deletaUsuario(usuario);
         return "/faces/index.xhtml";
     }
     
-    
+    //Listar
     public  List<Usuario> getUsuarios(){        
         return usuarioRepositorio.getUsuarios();
+        //return cliente.getUsuarios(new GenericType<List<Usuario>>(){});
     }
 
-    
-    
-    //Login
-//    public String validaUser(){
-//        
-//        for (Usuario user : usuarioRepositorio.getUsuarios()) {
-//            if(user.getEmail().equalsIgnoreCase(email)){
-//                if(user.getKey().equalsIgnoreCase(key)){
-//                    return "validaUser";
-//                }else{
-//                    FacesContext context = FacesContext.getCurrentInstance();
-//                    FacesMessage menMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-//                                                        "Senha incorreta!",
-//                                                        "Verifique a senha digitada!!");
-//                    context.addMessage(null, menMessage);
-//                    return "";
-//                }
-//            }
-//        }
-//        return "";
-//    }
-    
 }

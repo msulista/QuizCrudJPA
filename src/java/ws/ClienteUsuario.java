@@ -10,7 +10,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import model.Usuario;
-import sun.net.www.content.text.Generic;
 
 /**
  * Jersey REST client generated for REST resource:UsuariosResource

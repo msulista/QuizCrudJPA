@@ -32,7 +32,7 @@ public class PerguntaMB {
         this.perguntaRepositorio = new PerguntaRepositorio();
         this.respostas = new String[4];
         this.perguntaSelecionada = new Pergunta();
-        this.quiz = new Quiz();
+        //this.quiz = new Quiz();
     }
 
     public String[] getRespostas() {
